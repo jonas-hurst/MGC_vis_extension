@@ -9,13 +9,19 @@
         "scripts/content.js"
       ],
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "http://maps.google.com/*",
+        "https://maps.google.com/*",
+        "http://www.google.com/maps/*",
+        "https://www.google.com/maps/*",
+        "http://www.openstreetmap.org/*",
+        "https://www.openstreetmap.org/*",
+        "http://localhost:3000/*",
+        "https://localhost:3000/*"
       ]
     }
   ],
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "popup/index.html",
     "default_title": "MGC Visualizer"
   }
 }
