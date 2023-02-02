@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "MGC Visualizer",
+  "description": "A small extension to visualize the input of Map Gesture Controller",
+  "version": "1.0.0",
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/content.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "MGC Visualizer"
+  }
+}
