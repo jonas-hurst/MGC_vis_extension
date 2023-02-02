@@ -1,4 +1,4 @@
-console.log("Hallo Welt!");
+console.log("Initializing MGC extension...");
 
 const htmlElement = document.createElement("div")
 htmlElement.className = "coarseDot"
