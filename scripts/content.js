@@ -1,23 +1,25 @@
 console.log("Initializing MGC extension...");
 
+function addCoarseCssToDot(element, color) {
+    const coarseDotSizeInPx = 50;
+
+    element.style.textAlign = "center";
+    element.style.lineHeight = `${coarseDotSizeInPx}px`;
+    element.style.position = "fixed";
+    element.style.top = "10px";
+    element.style.right = "10px";
+    element.style.pointerEvents = "none";
+    element.style.width = `${coarseDotSizeInPx}px`;
+    element.style.height = `${coarseDotSizeInPx}px`;
+    element.style.backgroundColor = color;
+    element.style.borderRadius = "50%";
+    element.style.zIndex = "99999";
+}
+
 const dotRight = document.createElement("div")
 dotRight.className = "dotRight"
 dotRight.innerText = "R";
-
-const coarseDotSizeInPx = 50;
-
-dotRight.style.textAlign = "center";
-dotRight.style.lineHeight = `${coarseDotSizeInPx}px`;
-dotRight.style.position = "fixed";
-dotRight.style.top = "10px";
-dotRight.style.right = "10px";
-dotRight.style.pointerEvents = "none";
-dotRight.style.width = `${coarseDotSizeInPx}px`;
-dotRight.style.height = `${coarseDotSizeInPx}px`;
-dotRight.style.backgroundColor = "red";
-dotRight.style.borderRadius = "50%";
-dotRight.style.zIndex = "99999";
-
+addCoarseCssToDot(dotRight, "red")
 
 
 if (confirm("do you want to connect to Server?")){
