@@ -1,7 +1,8 @@
 console.log("Initializing MGC extension...");
 
+const coarseDotSizeInPx = 50;
+
 function addCoarseCssToDot(element, color) {
-    const coarseDotSizeInPx = 50;
 
     element.style.textAlign = "center";
     element.style.lineHeight = `${coarseDotSizeInPx}px`;
