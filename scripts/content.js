@@ -11,7 +11,7 @@ htmlElement.style.textAlign = "center";
 htmlElement.style.lineHeight = `${coarseDotSizeInPx}px`;
 htmlElement.style.position = "fixed";
 htmlElement.style.top = "10px";
-htmlElement.style.left = "10px";
+htmlElement.style.right = "10px";
 htmlElement.style.pointerEvents = "none";
 htmlElement.style.width = `${coarseDotSizeInPx}px`;
 htmlElement.style.height = `${coarseDotSizeInPx}px`;
@@ -23,7 +23,7 @@ htmlElement.style.zIndex = "99999";
 
 if (confirm("do you want to connect to Server?")){
 
-    const websocketUrl = "ws://localhost:1234";
+    const websocketUrl = "ws://localhost:8765";
     const socket = new WebSocket(websocketUrl)
 
     // Show error message on error
@@ -43,7 +43,26 @@ if (confirm("do you want to connect to Server?")){
 
     // Process message from server
     socket.onmessage = (event) => {
-        console.log(event.data);
+        const msgData = JSON.parse(event.data)
+        // console.log(msgData)
+
+        // Process Left hand data
+        if (msgData.left.present){
+            console.log("left hand present. not further implemented");
+        }
+
+        // Process Right hand data
+        if (msgData.right.present){
+            htmlElement.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
+            htmlElement.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+        }
+        
     }
 
 }
+
+
+// addEventListener("mousemove", (event) => {
+//   console.log(event.pageX, event.pageY)
+// });
+
