@@ -1,23 +1,22 @@
 console.log("Initializing MGC extension...");
 
-const htmlElement = document.createElement("div")
-htmlElement.className = "coarseDot"
-
-htmlElement.innerText = "R";
+const dotRight = document.createElement("div")
+dotRight.className = "dotRight"
+dotRight.innerText = "R";
 
 const coarseDotSizeInPx = 50;
 
-htmlElement.style.textAlign = "center";
-htmlElement.style.lineHeight = `${coarseDotSizeInPx}px`;
-htmlElement.style.position = "fixed";
-htmlElement.style.top = "10px";
-htmlElement.style.right = "10px";
-htmlElement.style.pointerEvents = "none";
-htmlElement.style.width = `${coarseDotSizeInPx}px`;
-htmlElement.style.height = `${coarseDotSizeInPx}px`;
-htmlElement.style.backgroundColor = "red";
-htmlElement.style.borderRadius = "50%";
-htmlElement.style.zIndex = "99999";
+dotRight.style.textAlign = "center";
+dotRight.style.lineHeight = `${coarseDotSizeInPx}px`;
+dotRight.style.position = "fixed";
+dotRight.style.top = "10px";
+dotRight.style.right = "10px";
+dotRight.style.pointerEvents = "none";
+dotRight.style.width = `${coarseDotSizeInPx}px`;
+dotRight.style.height = `${coarseDotSizeInPx}px`;
+dotRight.style.backgroundColor = "red";
+dotRight.style.borderRadius = "50%";
+dotRight.style.zIndex = "99999";
 
 
 
@@ -33,12 +32,12 @@ if (confirm("do you want to connect to Server?")){
 
     // Add pointer to DOM if connection is open
     socket.onopen = () => {
-        document.body.insertAdjacentElement("afterbegin", htmlElement)
+        document.body.insertAdjacentElement("afterbegin", dotRight)
     }
 
     // Remove pointer from DOM once connection closes
     socket.onclose = () => {
-        htmlElement.remove();
+        dotRight.remove();
     }
 
     // Process message from server
@@ -53,8 +52,8 @@ if (confirm("do you want to connect to Server?")){
 
         // Process Right hand data
         if (msgData.right.present){
-            htmlElement.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
-            htmlElement.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+            dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
+            dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
         }
         
     }
