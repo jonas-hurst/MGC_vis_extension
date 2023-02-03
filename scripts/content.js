@@ -3,18 +3,19 @@ console.log("Initializing MGC extension...");
 const htmlElement = document.createElement("div")
 htmlElement.className = "coarseDot"
 
-const dotstyle = [
-    "position: fixed;",
-    "top: 10px;",
-    "left: 10px;",
-    "pointer-events: none;",
-    "width: 50px;",
-    "height: 50px;",
-    "background-color: red;",
-    "display:inline-block;",
-    "border-radius:50%;",
-    "z-index: 99999",]
-htmlElement.style = dotstyle.join(" ")
+const coarseDotSizeInPx = 50;
+
+htmlElement.style.position = "fixed";
+htmlElement.style.top = "10px";
+htmlElement.style.left = "10px";
+htmlElement.style.pointerEvents = "none";
+htmlElement.style.width = `${coarseDotSizeInPx}px`;
+htmlElement.style.height = `${coarseDotSizeInPx}px`;
+htmlElement.style.backgroundColor = "red";
+htmlElement.style.borderRadius = "50%";
+htmlElement.style.zIndex = "99999";
+
+
 
 if (confirm("do you want to connect to Server?")){
 
