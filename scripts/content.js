@@ -22,6 +22,12 @@ dotRight.className = "dotRight"
 dotRight.innerText = "R";
 addCoarseCssToDot(dotRight, "red")
 
+const dotLeft = document.createElement("div");
+dotLeft.className = "dotLeft";
+dotLeft.innerText = "L";
+addCoarseCssToDot(dotLeft, "blue")
+
+
 
 if (confirm("do you want to connect to Server?")){
 
@@ -36,6 +42,7 @@ if (confirm("do you want to connect to Server?")){
     // Add pointer to DOM if connection is open
     socket.onopen = () => {
         document.body.insertAdjacentElement("afterbegin", dotRight)
+        document.body.insertAdjacentElement("afterbegin", dotLeft)
     }
 
     // Remove pointer from DOM once connection closes
@@ -50,7 +57,8 @@ if (confirm("do you want to connect to Server?")){
 
         // Process Left hand data
         if (msgData.left.present){
-            console.log("left hand present. not further implemented");
+            dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
+            dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
         }
 
         // Process Right hand data
