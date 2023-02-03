@@ -15,6 +15,7 @@ function addCoarseCssToDot(element, color) {
     element.style.backgroundColor = color;
     element.style.borderRadius = "50%";
     element.style.zIndex = "99999";
+    element.style.opacity = "1"
 }
 
 const dotRight = document.createElement("div")
@@ -57,14 +58,22 @@ if (confirm("do you want to connect to Server?")){
 
         // Process Left hand data
         if (msgData.left.present){
+            dotLeft.style.opacity = "1";
             dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
             dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
+        } else {
+            console.log("left hand not there");
+            dotLeft.style.opacity = "0";
         }
 
         // Process Right hand data
         if (msgData.right.present){
+            dotRight.style.opacity = "1";
             dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
             dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+        } else {
+            console.log("right hand not there");
+            dotRight.style.opacity = "0";
         }
         
     }
