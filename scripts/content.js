@@ -3,8 +3,12 @@ console.log("Initializing MGC extension...");
 const htmlElement = document.createElement("div")
 htmlElement.className = "coarseDot"
 
+htmlElement.innerText = "R";
+
 const coarseDotSizeInPx = 50;
 
+htmlElement.style.textAlign = "center";
+htmlElement.style.lineHeight = `${coarseDotSizeInPx}px`;
 htmlElement.style.position = "fixed";
 htmlElement.style.top = "10px";
 htmlElement.style.left = "10px";
