@@ -62,7 +62,7 @@ if (confirm("do you want to connect to Server?")){
             dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
             dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
         } else {
-            console.log("left hand not there");
+            // console.log("left hand not there");
             dotLeft.style.opacity = "0";
         }
 
@@ -72,7 +72,7 @@ if (confirm("do you want to connect to Server?")){
             dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
             dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
         } else {
-            console.log("right hand not there");
+            // console.log("right hand not there");
             dotRight.style.opacity = "0";
         }
         
