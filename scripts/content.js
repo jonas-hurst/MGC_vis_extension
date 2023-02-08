@@ -1,6 +1,6 @@
 console.log("Initializing MGC extension...");
 
-const coarseDotSizeInPx = 50;
+const coarseDotSizeInPx = 20;
 
 function addCoarseCssToDot(element, color) {
 
