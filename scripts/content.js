@@ -28,7 +28,38 @@ dotLeft.className = "dotLeft";
 dotLeft.innerText = "L";
 addCoarseCssToDot(dotLeft, "blue")
 
+const centercross = document.createElement("div");
+centercross.className ="centercross";
+centercross.style.width = "50px";
+centercross.style.height = "50px"
+centercross.style.borderRadius = "50%";
+centercross.style.position = "fixed";
+centercross.style.border = "4px solid red";
+centercross.style.left = "50vw";
+centercross.style.top = "50vh";
+centercross.style.transform = "translate(-29px, -29px)";
+centercross.style.zIndex = "99998";
+centercross.style.pointerEvents = "none";
+centercross.style.display = "flex";
+centercross.style.alignItems = "center";
+centercross.style.justifyContent ="center";
+centercross.style.opacity = "0";
 
+const horizontalLine = document.createElement("div");
+horizontalLine.style.backgroundColor = "red";
+horizontalLine.style.position = "fixed";
+horizontalLine.style.height = "3px";
+horizontalLine.style.width = "inherit";
+horizontalLine.style.opacity = "inherit";
+centercross.insertAdjacentElement("afterbegin", horizontalLine);
+
+const verticalLine = document.createElement("div");
+verticalLine.style.backgroundColor = "red";
+verticalLine.style.position = "fixed";
+verticalLine.style.height = "inherit";
+verticalLine.style.width = "3px";
+verticalLine.style.opacity = "inherit";
+centercross.insertAdjacentElement("afterbegin", verticalLine)
 
 if (confirm("do you want to connect to Server?")){
 
@@ -44,6 +75,7 @@ if (confirm("do you want to connect to Server?")){
     socket.onopen = () => {
         document.body.insertAdjacentElement("afterbegin", dotRight)
         document.body.insertAdjacentElement("afterbegin", dotLeft)
+        document.body.insertAdjacentElement("afterbegin", centercross)
     }
 
     // Remove pointer from DOM once connection closes
@@ -55,6 +87,12 @@ if (confirm("do you want to connect to Server?")){
     socket.onmessage = (event) => {
         const msgData = JSON.parse(event.data)
         // console.log(msgData)
+
+        if (msgData.centercross){
+            centercross.style.opacity = "1";
+        } else {
+            centercross.style.opacity = "0";
+        }
 
         // Process Left hand data
         if (msgData.left.present){
