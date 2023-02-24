@@ -91,6 +91,7 @@ if (confirm("do you want to connect to Server?")){
     socket.onerror = (event) => {
         textbox.innerText = "Connection failed";
         textbox.style.backgroundColor = "red";
+        textbox.style.opacity = "1";
     }
 
     // Add pointer to DOM if connection is open
