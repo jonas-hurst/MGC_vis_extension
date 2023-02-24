@@ -2,6 +2,7 @@ console.log("Initializing MGC extension...");
 
 const coarseDotSizeInPx = 20;
 
+// Method to add css to pointers
 function addCoarseCssToDot(element, color) {
 
     element.style.textAlign = "center";
@@ -18,16 +19,19 @@ function addCoarseCssToDot(element, color) {
     element.style.opacity = "1"
 }
 
+// Pointer for right hand
 const dotRight = document.createElement("div")
 dotRight.className = "dotRight"
 dotRight.innerText = "R";
 addCoarseCssToDot(dotRight, "red")
 
+// Pointer for left hand
 const dotLeft = document.createElement("div");
 dotLeft.className = "dotLeft";
 dotLeft.innerText = "L";
 addCoarseCssToDot(dotLeft, "blue")
 
+// Pointer in center of screen, used for object-to-pointer selection
 const centercross = document.createElement("div");
 centercross.className ="centercross";
 centercross.style.width = "50px";
