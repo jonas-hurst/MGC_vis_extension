@@ -65,18 +65,41 @@ verticalLine.style.width = "3px";
 verticalLine.style.opacity = "inherit";
 centercross.insertAdjacentElement("afterbegin", verticalLine)
 
+// Textbox to idicate connect status
+const textbox = document.createElement("div");
+textbox.className = "connectTextbox";
+textbox.innerText = "Connecting";
+textbox.style.padding = "15px";
+textbox.style.fontSize = "25px";
+textbox.style.borderRadius = "10px";
+textbox.style.backgroundColor = "orange";
+textbox.style.position = "fixed";
+textbox.style.bottom = "20px";
+textbox.style.right = "20px";
+textbox.style.zIndex = "99998";
+textbox.style.pointerEvents = "none";
+
+
 if (confirm("do you want to connect to Server?")){
 
+    document.body.insertAdjacentElement("afterbegin", textbox)
+    
     const websocketUrl = "ws://localhost:8765";
     const socket = new WebSocket(websocketUrl)
 
     // Show error message on error
     socket.onerror = (event) => {
-        alert("Something went wrong connecting to server.")
+        textbox.innerText = "Connection failed";
+        textbox.style.backgroundColor = "red";
     }
 
     // Add pointer to DOM if connection is open
     socket.onopen = () => {
+        textbox.innerText = "Connected";
+        textbox.style.backgroundColor = "green";
+        setTimeout(() => {
+            textbox.style.opacity = "0";
+        }, 1500)
         document.body.insertAdjacentElement("afterbegin", dotRight)
         document.body.insertAdjacentElement("afterbegin", dotLeft)
         document.body.insertAdjacentElement("afterbegin", centercross)
