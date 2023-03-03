@@ -1,9 +1,8 @@
-console.log("Initializing MGC extension...");
-
-const coarseDotSizeInPx = 20;
+const coarseDotSizeInPx = 50;
+const fineDotSizeInPx = 15;
 
 // Method to add css to pointers
-function addCoarseCssToDot(element, color) {
+function addCoarseCssToDot(element, r, g, b) {
 
     element.style.textAlign = "center";
     element.style.lineHeight = `${coarseDotSizeInPx}px`;
@@ -13,7 +12,7 @@ function addCoarseCssToDot(element, color) {
     element.style.pointerEvents = "none";
     element.style.width = `${coarseDotSizeInPx}px`;
     element.style.height = `${coarseDotSizeInPx}px`;
-    element.style.backgroundColor = color;
+    element.style.background = `radial-gradient(rgba(${r}, ${g}, ${b}, 1.0), rgba(${r}, ${g}, ${b}, 0.0))`;
     element.style.borderRadius = "50%";
     element.style.zIndex = "99999";
     element.style.opacity = "1"
@@ -23,13 +22,13 @@ function addCoarseCssToDot(element, color) {
 const dotRight = document.createElement("div")
 dotRight.className = "dotRight"
 dotRight.innerText = "R";
-addCoarseCssToDot(dotRight, "red")
+addCoarseCssToDot(dotRight, 255, 0, 0)
 
 // Pointer for left hand
 const dotLeft = document.createElement("div");
 dotLeft.className = "dotLeft";
 dotLeft.innerText = "L";
-addCoarseCssToDot(dotLeft, "blue")
+addCoarseCssToDot(dotLeft, 0, 0, 255)
 
 // Pointer in center of screen, used for object-to-pointer selection
 const centercross = document.createElement("div");
@@ -127,6 +126,14 @@ if (confirm("do you want to connect to Server?")){
             dotLeft.style.opacity = "1";
             dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
             dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
+            if (msgData.left.fine){
+                dotLeft.style.width = `${fineDotSizeInPx}px`;
+                dotLeft.style.height = `${fineDotSizeInPx}px`;
+            }
+            else {
+                dotLeft.style.width = `${coarseDotSizeInPx}px`;
+                dotLeft.style.height = `${coarseDotSizeInPx}px`;
+            }
         } else {
             // console.log("left hand not there");
             dotLeft.style.opacity = "0";
@@ -135,8 +142,17 @@ if (confirm("do you want to connect to Server?")){
         // Process Right hand data
         if (msgData.right.present){
             dotRight.style.opacity = "1";
-            dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
-            dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+            if (msgData.right.fine){
+                dotRight.style.width = `${fineDotSizeInPx}px`;
+                dotRight.style.height = `${fineDotSizeInPx}px`;
+                dotRight.style.top = `${msgData.right.position.y - fineDotSizeInPx/2}px`;
+                dotRight.style.right = `${msgData.right.position.x - fineDotSizeInPx/2}px`;
+            } else {
+                dotRight.style.width = `${coarseDotSizeInPx}px`;
+                dotRight.style.height = `${coarseDotSizeInPx}px`;
+                dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
+                dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+            }
         } else {
             // console.log("right hand not there");
             dotRight.style.opacity = "0";
