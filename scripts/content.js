@@ -124,15 +124,17 @@ if (confirm("do you want to connect to Server?")){
         // Process Left hand data
         if (msgData.left.present){
             dotLeft.style.opacity = "1";
-            dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
-            dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
             if (msgData.left.fine){
                 dotLeft.style.width = `${fineDotSizeInPx}px`;
                 dotLeft.style.height = `${fineDotSizeInPx}px`;
+                dotLeft.style.top = `${msgData.left.position.y - fineDotSizeInPx/2}px`;
+                dotLeft.style.right = `${msgData.left.position.x - fineDotSizeInPx/2}px`;
             }
             else {
                 dotLeft.style.width = `${coarseDotSizeInPx}px`;
                 dotLeft.style.height = `${coarseDotSizeInPx}px`;
+                dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
+                dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
             }
         } else {
             // console.log("left hand not there");
