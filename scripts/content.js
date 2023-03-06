@@ -21,13 +21,11 @@ function addCoarseCssToDot(element, r, g, b) {
 // Pointer for right hand
 const dotRight = document.createElement("div")
 dotRight.className = "dotRight"
-dotRight.innerText = "R";
 addCoarseCssToDot(dotRight, 255, 0, 0)
 
 // Pointer for left hand
 const dotLeft = document.createElement("div");
 dotLeft.className = "dotLeft";
-dotLeft.innerText = "L";
 addCoarseCssToDot(dotLeft, 0, 0, 255)
 
 // Pointer in center of screen, used for object-to-pointer selection
