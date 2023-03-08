@@ -105,7 +105,12 @@ if (confirm("do you want to connect to Server?")){
 
     // Remove pointer from DOM once connection closes
     socket.onclose = () => {
+        textbox.innerText = "Connection Closed";
+        textbox.style.backgroundColor = "red";
+        textbox.style.opacity = "1";
         dotRight.remove();
+        dotLeft.remove();
+        centercross.remove();
     }
 
     // Process message from server
