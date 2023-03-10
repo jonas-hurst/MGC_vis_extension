@@ -76,6 +76,10 @@ textbox.style.right = "20px";
 textbox.style.zIndex = "99998";
 textbox.style.pointerEvents = "none";
 
+function preventContextmenu(e){
+    e.preventDefault()
+}
+
 
 if (confirm("do you want to connect to Server?")){
 
@@ -86,6 +90,9 @@ if (confirm("do you want to connect to Server?")){
 
     // Show error message on error
     socket.onerror = (event) => {
+        //re-enaable right-click
+        document.removeEventListener("contextmenu", preventContextmenu)
+
         textbox.innerText = "Connection failed";
         textbox.style.backgroundColor = "red";
         textbox.style.opacity = "1";
@@ -93,6 +100,9 @@ if (confirm("do you want to connect to Server?")){
 
     // Add pointer to DOM if connection is open
     socket.onopen = () => {
+        // prevent right-click
+        document.addEventListener('contextmenu', preventContextmenu);
+
         textbox.innerText = "Connected";
         textbox.style.backgroundColor = "green";
         setTimeout(() => {
@@ -105,6 +115,9 @@ if (confirm("do you want to connect to Server?")){
 
     // Remove pointer from DOM once connection closes
     socket.onclose = () => {
+        //re-enaable right-click
+        document.removeEventListener("contextmenu", preventContextmenu)
+
         textbox.innerText = "Connection Closed";
         textbox.style.backgroundColor = "red";
         textbox.style.opacity = "1";
