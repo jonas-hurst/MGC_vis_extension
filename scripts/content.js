@@ -8,7 +8,7 @@ function addCoarseCssToDot(element, r, g, b) {
     element.style.lineHeight = `${coarseDotSizeInPx}px`;
     element.style.position = "fixed";
     element.style.top = "10px";
-    element.style.right = "10px";
+    element.style.left = "10px";
     element.style.pointerEvents = "none";
     element.style.width = `${coarseDotSizeInPx}px`;
     element.style.height = `${coarseDotSizeInPx}px`;
@@ -144,13 +144,13 @@ if (confirm("do you want to connect to Server?")){
                 dotLeft.style.width = `${fineDotSizeInPx}px`;
                 dotLeft.style.height = `${fineDotSizeInPx}px`;
                 dotLeft.style.top = `${msgData.left.position.y - fineDotSizeInPx/2}px`;
-                dotLeft.style.right = `${msgData.left.position.x - fineDotSizeInPx/2}px`;
+                dotLeft.style.left = `${msgData.left.position.x - fineDotSizeInPx/2}px`;
             }
             else {
                 dotLeft.style.width = `${coarseDotSizeInPx}px`;
                 dotLeft.style.height = `${coarseDotSizeInPx}px`;
                 dotLeft.style.top = `${msgData.left.position.y - coarseDotSizeInPx/2}px`;
-                dotLeft.style.right = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
+                dotLeft.style.left = `${msgData.left.position.x - coarseDotSizeInPx/2}px`;
             }
         } else {
             // console.log("left hand not there");
@@ -164,12 +164,12 @@ if (confirm("do you want to connect to Server?")){
                 dotRight.style.width = `${fineDotSizeInPx}px`;
                 dotRight.style.height = `${fineDotSizeInPx}px`;
                 dotRight.style.top = `${msgData.right.position.y - fineDotSizeInPx/2}px`;
-                dotRight.style.right = `${msgData.right.position.x - fineDotSizeInPx/2}px`;
+                dotRight.style.left = `${msgData.right.position.x - fineDotSizeInPx/2}px`;
             } else {
                 dotRight.style.width = `${coarseDotSizeInPx}px`;
                 dotRight.style.height = `${coarseDotSizeInPx}px`;
                 dotRight.style.top = `${msgData.right.position.y - coarseDotSizeInPx/2}px`;
-                dotRight.style.right = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
+                dotRight.style.left = `${msgData.right.position.x - coarseDotSizeInPx/2}px`;
             }
         } else {
             // console.log("right hand not there");
