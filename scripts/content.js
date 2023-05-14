@@ -181,9 +181,3 @@ if (confirm("do you want to connect to Server?")){
     connect()
 
 }
-
-
-// addEventListener("mousemove", (event) => {
-//   console.log(event.pageX, event.pageY)
-// });
-
