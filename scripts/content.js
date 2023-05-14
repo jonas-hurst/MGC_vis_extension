@@ -112,13 +112,15 @@ function connect(){
         //re-enaable right-click
         document.removeEventListener("contextmenu", preventContextmenu)
 
-        textbox.innerText = "Connection Closed";
         textbox.style.backgroundColor = "red";
         textbox.style.opacity = "1";
         dotRight.remove();
         dotLeft.remove();
         centercross.remove();
 
+        textbox.innerText = "Connection Closed. Reconnect in 3...";
+        setTimeout(() => textbox.innerText = "Connection Closed. Reconnect in 2...", 1000)
+        setTimeout(() => textbox.innerText = "Connection Closed. Reconnect in 1...", 2000)
         setTimeout(connect, 3000);
     }
 
