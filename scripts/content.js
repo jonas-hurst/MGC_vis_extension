@@ -65,11 +65,10 @@ centercross.insertAdjacentElement("afterbegin", verticalLine)
 // Textbox to idicate connect status
 const textbox = document.createElement("div");
 textbox.className = "connectTextbox";
-textbox.innerText = "Connecting";
+
 textbox.style.padding = "15px";
 textbox.style.fontSize = "25px";
 textbox.style.borderRadius = "10px";
-textbox.style.backgroundColor = "orange";
 textbox.style.position = "fixed";
 textbox.style.bottom = "20px";
 textbox.style.right = "20px";
@@ -81,21 +80,16 @@ function preventContextmenu(e){
 }
 
 
-if (confirm("do you want to connect to Server?")){
+function connect(){
+    textbox.innerText = "Connecting...";
+    textbox.style.backgroundColor = "orange";
 
-    document.body.insertAdjacentElement("afterbegin", textbox)
-    
     const websocketUrl = "ws://localhost:8765";
     const socket = new WebSocket(websocketUrl)
 
     // Show error message on error
     socket.onerror = (event) => {
-        //re-enaable right-click
-        document.removeEventListener("contextmenu", preventContextmenu)
-
-        textbox.innerText = "Connection failed";
-        textbox.style.backgroundColor = "red";
-        textbox.style.opacity = "1";
+        socket.close()
     }
 
     // Add pointer to DOM if connection is open
@@ -124,6 +118,8 @@ if (confirm("do you want to connect to Server?")){
         dotRight.remove();
         dotLeft.remove();
         centercross.remove();
+
+        setTimeout(connect, 3000);
     }
 
     // Process message from server
@@ -177,6 +173,12 @@ if (confirm("do you want to connect to Server?")){
         }
         
     }
+}
+
+if (confirm("do you want to connect to Server?")){
+
+    document.body.insertAdjacentElement("afterbegin", textbox)
+    connect()
 
 }
 
